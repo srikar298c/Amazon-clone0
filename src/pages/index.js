@@ -8,6 +8,7 @@ export default function Home({products}) {
       <div className="bg-gray-100">
       <Head>
         <title>Amazon 2.0</title>
+       
       </Head>
       
       <Header/>
