@@ -17,13 +17,14 @@ export const basketSlice = createSlice({
 
       let newBasket =[...state.items];
       if(index>=0){
-newBasket.splice(index)
+newBasket.splice(index, 1)
       }
       else {
         console.warn (
           `cant remove product (id: ${action.payload.id}) as its not in `
         )
       }
+      state.items = newBasket;
     },
   },
 });
