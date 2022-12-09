@@ -3,8 +3,11 @@ import Image from "next/image"
 import { useSelector } from "react-redux"
 import { selectItems } from "../slices/basketSlice"
 import CheckoutProduct from "../components/CheckoutProduct"
+import { Currency} from "react-currency-formatter"
+import { useSession } from "next-auth/react"
 function checkout() {
   const items = useSelector(selectItems)
+  const {session} =useSession();
   return (
    <div className="bg-gray-100"><Header/>
    <main className="lg:flex max-w-screen-2xl mx-auto">
@@ -34,6 +37,22 @@ hasPrime ={item.hasPrime}
         ))
         }
       </div>
+    </div>
+    {/* Right */}
+    <div className="flex flex-col bg-white p-10" >
+      {items.length >0 &&(
+        <>
+        <h2>Subtotal ({items.length }items):
+        <span className="font-bold">
+          {/* <Currency quantity ={total} currency ="GBP"/> */}
+          </span>
+          </h2>
+          <button className={`button mt -2 ${!session && 'from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed'}`}>
+            {!session ? "Sign in to checkout":"Proceed to checkout"}
+          </button>
+        </>
+      )}
+
     </div>
     </main>
     </div>
