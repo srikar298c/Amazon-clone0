@@ -1,4 +1,4 @@
-const config = {
+module.exports = {
   mode: "jit",
   purge: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
@@ -20,5 +20,3 @@ const config = {
   },
   plugins: [require("@tailwindcss/line-clamp")],
 };
-
-module.exports = config;
